@@ -1,4 +1,4 @@
-require 'rails_helper'
+ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
@@ -7,12 +7,6 @@ RSpec.describe UsersController, type: :controller do
 
     it { should render_template :index }
   end
-
-  # describe '#show' do
-  #   before { process :show, method: :get, format: :json }
-  #
-  #   it { should render_template :show }
-  # end
 
 
   describe '#create' do
@@ -31,33 +25,59 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#collection' do
-      before { expect(User).to receive(:all).and_return(:collection) }
+    before { expect(User).to receive(:all).and_return(:collection) }
 
-      its(:collection) { should eq :collection }
+    its(:collection) { should eq :collection }
   end
 
 
   describe '#resource' do
-      let(:params) {{id: 1 }}
+    # let(:params) {{id: 1 }}
 
-      before { expect(subject).to receive(:params).and_return(params)}
+    # before { expect(subject).to receive(:params).and_return(params)}
 
-      before { expect(User).to receive(:find).with(1).and_return(:resource) }
+    before { expect(subject).to receive(:params).and_return({ id: 1 }) }
 
-      its(:resource) { should eq :resource }
+    before { expect(User).to receive(:find).with(1).and_return(:resource) }
+
+    its(:resource) { should eq :resource }
   end
 
 
   describe '#destroy' do
-      before do
-        expect(subject).to receive(:resource) do
-          double.tap { |a| expect(a).to receive(:destroy!) }
-        end
-      end
+    # let(:params) {{id: 1 }}
 
-      before { process :destroy, method: :delete, params: params, format: :json }
+    let(:resource) { stub_model User }
 
-      it { should render_template :destroy}
+    # before { expect(subject).to receive(:params).and_return({ id: 1 }) }
+
+    before { expect(User).to receive(:find).with("1").and_return(resource) }
+
+    before { expect(resource).to receive(:destroy!) }
+
+    before { process :destroy, method: :delete, params: {id: "1"}, format: :json }
+
+    it { should render_template :destroy }
   end
+
+
+  describe '#update' do
+    let(:params) {{ name: 'Bob' }}
+
+    let(:resource) { stub_model User }
+
+    # before { expect(subject).to receive(:params).and_return({ id: 1 }) }
+
+    before { expect(User).to receive(:find).with("1").and_return(resource) }
+
+    before { expect(resource).to receive(:update!).with(permit! params) }
+
+    before { process :update, method: :patch, params: {id: "1", name: "Bob"}, format: :json }
+
+    it { should render_template :update }
+  end
+
+
+
 
 end
