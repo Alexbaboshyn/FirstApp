@@ -1,38 +1,23 @@
 class UsersController < ApplicationController
 
-
-  def index
-  end
-
-  def show
-  end
-
   def create
    @user = User.new resource_params
 
    resource.save!
   end
 
-  def update
-    resource.update! resource_params
+  private
+  def resource
+    @user ||= User.find(params[:id])
   end
 
-  def destroy
-    resource.destroy!
+  def collection
+    @users ||= User.all
   end
 
- private
-   def resource
-     @user ||= User.find(params[:id])
-   end
-
-   def collection
-     @users ||= User.all
-   end
-
-   def resource_params
+  def resource_params
+    params.permit(:name)
     #  params.require(:user).permit(:name)
-     params.permit(:name)
-   end
+  end
 
 end

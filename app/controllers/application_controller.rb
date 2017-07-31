@@ -10,4 +10,16 @@ class ApplicationController < ActionController::Base
 
     render :exception
   end
+
+  rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do
+    render :errors, status: :unprocessable_entity
+  end
+
+  def update
+    resource.update! resource_params
+  end
+
+  def destroy
+    resource.destroy!
+  end
 end

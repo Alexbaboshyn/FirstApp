@@ -32,9 +32,7 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#resource' do
-    # let(:params) {{id: 1 }}
-
-    # before { expect(subject).to receive(:params).and_return(params)}
+    let(:params) {{ id: 1 }}
 
     before { expect(subject).to receive(:params).and_return({ id: 1 }) }
 
@@ -45,17 +43,13 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#destroy' do
-    # let(:params) {{id: 1 }}
-
     let(:resource) { stub_model User }
-
-    # before { expect(subject).to receive(:params).and_return({ id: 1 }) }
 
     before { expect(User).to receive(:find).with("1").and_return(resource) }
 
     before { expect(resource).to receive(:destroy!) }
 
-    before { process :destroy, method: :delete, params: {id: "1"}, format: :json }
+    before { process :destroy, method: :delete, params: { id: "1" }, format: :json }
 
     it { should render_template :destroy }
   end
@@ -66,18 +60,12 @@ RSpec.describe UsersController, type: :controller do
 
     let(:resource) { stub_model User }
 
-    # before { expect(subject).to receive(:params).and_return({ id: 1 }) }
-
     before { expect(User).to receive(:find).with("1").and_return(resource) }
 
     before { expect(resource).to receive(:update!).with(permit! params) }
 
-    before { process :update, method: :patch, params: {id: "1", name: "Bob"}, format: :json }
+    before { process :update, method: :patch, params: { id: "1", name: "Bob" }, format: :json }
 
     it { should render_template :update }
   end
-
-
-
-
 end
