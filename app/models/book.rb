@@ -12,9 +12,7 @@ class Book < ApplicationRecord
   before_validation :set_year
 
   def set_year
-    if year.blank?
-      self.year = Time.now.year
-    end
+    self.year ||= Time.now.year
   end
 
 end

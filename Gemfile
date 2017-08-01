@@ -24,6 +24,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
   gem 'byebug', platform: :mri
