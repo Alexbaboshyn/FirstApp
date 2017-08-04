@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     render :errors, status: :unprocessable_entity
   end
 
+  def create
+    build_resource
+
+    resource.save!
+  end
+
   def update
     resource.update! resource_params
   end

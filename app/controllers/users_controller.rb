@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-
-  def create
+  def build_resource
    @user = User.new resource_params
-
-   resource.save!
   end
 
   private

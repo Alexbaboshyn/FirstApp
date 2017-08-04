@@ -1,15 +1,15 @@
 class Book < ApplicationRecord
-  # attr_accessor :year
-  validates :name, presence: { message: "can't be blank" }
+  belongs_to :user
 
-  validates :publisher, presence: { message: "must be given" }
+  validates :name, presence: true
+
+  validates :publisher, presence: { message: 'must be given' }
 
   validates :year, numericality: true
 
 
-  belongs_to :user
 
-  before_validation :set_year
+  before_validation :set_year, on: :create
 
   def set_year
     self.year ||= Time.now.year

@@ -25,7 +25,15 @@ RSpec.describe BooksController, type: :controller do
   end
 
   describe '#collection' do
-    before { expect(Book).to receive(:all).and_return(:collection) }
+    let(:params) { { user_id: '1' } }
+
+    let(:parent) { stub_model User }
+
+    before { expect(subject).to receive(:params).and_return(params) }
+
+    before { expect(User).to receive(:find).with('1').and_return(parent) }
+
+    before { expect(parent).to receive(:books).and_return(:collection) }
 
     its(:collection) { should eq :collection }
   end

@@ -32,8 +32,6 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#resource' do
-    let(:params) {{ id: 1 }}
-
     before { expect(subject).to receive(:params).and_return({ id: 1 }) }
 
     before { expect(User).to receive(:find).with(1).and_return(:resource) }
@@ -45,11 +43,13 @@ RSpec.describe UsersController, type: :controller do
   describe '#destroy' do
     let(:resource) { stub_model User }
 
-    before { expect(User).to receive(:find).with("1").and_return(resource) }
+    let(:params) { {id: '1'} }
+
+    before { expect(User).to receive(:find).with('1').and_return(resource) }
 
     before { expect(resource).to receive(:destroy!) }
 
-    before { process :destroy, method: :delete, params: { id: "1" }, format: :json }
+    before { process :destroy, method: :delete, params: params, format: :json }
 
     it { should render_template :destroy }
   end

@@ -19,6 +19,8 @@ gem 'puma', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'draper', '3.0.0'
+
 group :development, :test do
   gem 'rails-controller-testing'
   gem 'pry-rails'

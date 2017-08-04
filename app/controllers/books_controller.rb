@@ -1,9 +1,6 @@
 class BooksController < ApplicationController
-
-  def create
+  def build_resource
    @book = parent.books.build resource_params
-
-   resource.save!
   end
 
   private
@@ -16,7 +13,11 @@ class BooksController < ApplicationController
   end
 
   def collection
-    @books ||= Book.all
+    # if params[:user_id]
+      @books ||= parent.books
+    # else
+      # @books ||= Book.all
+    # end
   end
 
   def resource_params
