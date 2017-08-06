@@ -7,6 +7,8 @@ class UserDecorator < Draper::Decorator
     {
       id: id,
       name: name,
+      email: email,
+      books_quantity: books_quantity,
       books: books
     }
   end

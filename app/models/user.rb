@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-   validates :name, presence: true
+  has_many :books, dependent: :destroy
 
-   has_many :books, dependent: :destroy
+  validates :name, presence: true
+
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 end

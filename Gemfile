@@ -18,8 +18,8 @@ gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 gem 'draper'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'rails-controller-testing'
@@ -31,8 +31,10 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'byebug', platform: :mri
   gem 'simplecov', require: false
+  gem 'email_spec'
 end
 
 group :development do
   gem 'listen', '~> 3.0.5'
+  gem "letter_opener"
 end

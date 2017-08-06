@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do |exception|
     @exception = exception
 
-    render :exception
+    head 404
   end
 
   rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do

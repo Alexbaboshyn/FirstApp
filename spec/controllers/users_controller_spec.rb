@@ -11,7 +11,7 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#create' do
-    let(:params) {{ name: 'Bob' }}
+    let(:params) { { name: 'Bob', email: 'bob@bob.com' } }
 
     let(:user) { stub_model User }
 
@@ -57,7 +57,7 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#update' do
-    let(:params) {{ name: 'Bob' }}
+    let(:params) { { name: 'Bob', email: 'bob@bob.com' } }
 
     let(:resource) { stub_model User }
 
@@ -65,7 +65,7 @@ RSpec.describe UsersController, type: :controller do
 
     before { expect(resource).to receive(:update!).with(permit! params) }
 
-    before { process :update, method: :patch, params: { id: "1", name: "Bob" }, format: :json }
+    before { process :update, method: :patch, params: { id: "1", name: "Bob", email: 'bob@bob.com' }, format: :json }
 
     it { should render_template :update }
   end
