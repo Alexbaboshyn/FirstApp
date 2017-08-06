@@ -10,7 +10,8 @@ RSpec.describe UserDecorator do
 
       should eq \
         id: 1,
-        name: 'Bob'
+        name: 'Bob',
+        books: user.books.decorate
       end
     end
   end

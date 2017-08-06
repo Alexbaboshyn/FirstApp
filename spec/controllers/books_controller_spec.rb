@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
+  it { should be_an ApplicationController }
 
   describe '#create' do
     let(:params) { { user_id: '1', book: { name: 'test', publisher: 'test', year: '2017' } } }

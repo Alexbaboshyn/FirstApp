@@ -1,6 +1,7 @@
  require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  it { should be_an ApplicationController }
 
   describe '#index' do
     before { process :index, method: :get, format: :json }

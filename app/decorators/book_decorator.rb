@@ -1,22 +1,18 @@
 class BookDecorator < Draper::Decorator
   delegate_all
 
-  decorates_association :users
   def as_json *args
-
-    if context[:index]
-
+    if context[:brief]
       {
         id: id,
         name: name,
         publisher: publisher,
         year: year
       }
-
-    elsif context[:show]
-
+    else
       {
         user_id: user_id,
+        id: id,
         name: name,
         publisher: publisher,
         year: year
