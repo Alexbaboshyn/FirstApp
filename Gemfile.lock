@@ -38,6 +38,8 @@ GEM
       activemodel (= 5.0.4)
       activesupport (= 5.0.4)
       arel (~> 7.0)
+    activerecord-committed_observer (0.0.4)
+      activerecord (> 3.0.0)
     activesupport (5.0.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -125,6 +127,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-observers (0.1.5)
+      activemodel (>= 4.0)
     railties (5.0.4)
       actionpack (= 5.0.4)
       activesupport (= 5.0.4)
@@ -195,6 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-committed_observer
   byebug
   draper
   email_spec
@@ -205,6 +210,7 @@ DEPENDENCIES
   puma
   rails
   rails-controller-testing
+  rails-observers
   rspec-activemodel-mocks
   rspec-its
   rspec-rails

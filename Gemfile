@@ -20,6 +20,8 @@ gem 'puma'
 # gem 'capistrano-rails', group: :development
 gem 'draper'
 gem 'sidekiq'
+gem 'rails-observers'
+gem 'activerecord-committed_observer'
 
 group :development, :test do
   gem 'rails-controller-testing'
