@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   def resource_params
     params.permit(:name, :email)
-    #  params.require(:user).permit(:name)
   end
 
 end

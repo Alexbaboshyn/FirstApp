@@ -13,11 +13,7 @@ class BooksController < ApplicationController
   end
 
   def collection
-    # if params[:user_id]
-      @books ||= parent.books
-    # else
-      # @books ||= Book.all
-    # end
+    @books ||= parent.books
   end
 
   def resource_params

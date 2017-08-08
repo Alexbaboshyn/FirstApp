@@ -12,7 +12,7 @@ RSpec.describe Book, type: :model do
   it { should validate_numericality_of(:year) }
 
   it { is_expected.to callback(:set_year).before(:validation).on(:create) }
-
+  
 
   describe '#set_year' do
     context do

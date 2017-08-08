@@ -7,8 +7,6 @@ class Book < ApplicationRecord
 
   validates :year, numericality: true
 
-
-
   before_validation :set_year, on: :create
 
   def set_year
