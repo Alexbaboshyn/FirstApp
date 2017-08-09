@@ -11,11 +11,11 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#create' do
-    let(:params) { { name: 'Bob', email: 'bob@bob.com' } }
+    let(:params) { { user: { name: 'Bob', email: 'bob@bob.com' } } }
 
     let(:user) { stub_model User }
 
-    before { expect(User).to receive(:new).with(permit! params).and_return(user) }
+    before { expect(User).to receive(:new).with(permit!(name: 'Bob', email: 'bob@bob.com')).and_return(user) }
 
     before { expect(user).to receive(:save!) }
 
@@ -57,15 +57,15 @@ RSpec.describe UsersController, type: :controller do
 
 
   describe '#update' do
-    let(:params) { { name: 'Bob', email: 'bob@bob.com' } }
+    let(:params) { { user: { name: 'Bob', email: 'bob@bob.com' } } }
 
     let(:resource) { stub_model User }
 
-    before { expect(User).to receive(:find).with("1").and_return(resource) }
+    before { expect(User).to receive(:find).with('1').and_return(resource) }
 
-    before { expect(resource).to receive(:update!).with(permit! params) }
+    before { expect(resource).to receive(:update!).with(permit!(name: 'Bob', email: 'bob@bob.com')) }
 
-    before { process :update, method: :patch, params: { id: "1", name: "Bob", email: 'bob@bob.com' }, format: :json }
+    before { process :update, method: :patch, params: params.merge( id: '1'), format: :json }
 
     it { should render_template :update }
   end

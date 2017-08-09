@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UserObserver, type: :observer do
-  let(:user) { stub_model User}
+  let(:user) { stub_model User }
 
   subject { described_class.send(:new) }
 

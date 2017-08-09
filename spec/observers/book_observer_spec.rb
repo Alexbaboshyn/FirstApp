@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BookObserver, type: :observer do
-  let(:book) { stub_model Book}
+  let(:book) { stub_model Book }
 
   subject { described_class.send(:new) }
 
