@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def build_resource
-   @user = User.new resource_params
+    @user = User.new resource_params
   end
 
   private
