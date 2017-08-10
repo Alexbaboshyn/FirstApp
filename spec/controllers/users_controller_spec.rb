@@ -65,7 +65,7 @@ RSpec.describe UsersController, type: :controller do
 
     before { expect(resource).to receive(:update!).with(permit!(name: 'Bob', email: 'bob@bob.com')) }
 
-    before { process :update, method: :patch, params: params.merge( id: '1'), format: :json }
+    before { process :update, method: :patch, params: params.merge(id: '1'), format: :json }
 
     it { should render_template :update }
   end
